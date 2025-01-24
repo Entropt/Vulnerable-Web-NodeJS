@@ -1,0 +1,15 @@
+{
+  "name": "vulnerable-web-nodejs",
+  "version": "1.0.0",
+  "description": "An intentionally vulnerable web application for testing purposes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tuan Do",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "marked": "^15.0.6"
+  }
+}
