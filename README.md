@@ -31,7 +31,7 @@ npm install express
 ```
 3. Run the server
 ```
-
+# Run with the main file in package.json
 node .
 ```
 
