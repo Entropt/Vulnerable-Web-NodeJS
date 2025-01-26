@@ -2,8 +2,7 @@
 
 ## Requirement
 | Vunerabilities | Progress |
-| :--- | :---:| 
-| Server-side Template Injection | not started |
+| :--- | :---:|
 | Race Condition | not started |
 | Prototype Pollution | not started |
 | JWT Attacks | not started|
@@ -24,12 +23,26 @@
 
 ## How to set up
 
-1. Install NodeJS & Node package manager (in the website)
-2. Install dependencies
+1. Install Nginx, MariaDB
 ```
-npm install express
+sudo apt install mariadb-server nginx
+sudo mysql_secure_installation          # Set up MariaDB
 ```
-3. Run the server
+2. Install NodeJS & Node package manager (in the website)
+```
+sudo apt install nodejs npm
+```
+OR you can try to install the same version with me:
+- *node v18.19.1*<br>
+- *npm 9.2.0*
+```
+
+```
+3. Install dependencies
+```
+npm install express jsonwebtoken
+```
+4. Run the server
 ```
 # Run with the main file in package.json
 node .
