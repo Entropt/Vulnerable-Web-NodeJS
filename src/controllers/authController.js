@@ -1,29 +1,27 @@
-const jwt = require('jsonwebtoken');
-const secret = 'your-secret-key';
+const jwt = require("jsonwebtoken");
+const secret = "your-secret-key";
 
 function checkJWT(req, res) {
-  const token = req.headers['Authorization'];
+  const token = req.headers["Authorization"];
 
   if (!token) {
-    return res.writeHead(401).end('No token provided');
+    return res.writeHead(401).end("No token provided");
   }
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
-      return res.writeHead(401).end('Invalid token');
+      return res.writeHead(401).end("Invalid token");
     }
 
     // Do something with the decoded data
     console.log(decoded);
-    res.writeHead(200).end('You are logged in');
+    res.writeHead(200).end("You are logged in");
   });
 }
 
-function createJWT(req, res) {
-  
-}
+function createJWT(req, res) {}
 
 module.exports = {
   checkJWT,
-
-}
+  createJWT,
+};
