@@ -2,11 +2,15 @@ const path = require("path");
 const fs = require("fs");
 
 const homeController = require("../controllers/homeController");
-const aboutController = require("../controllers/aboutController");
+const authController = require("../controllers/authController");
 
 // Handler for the Home route
 function handleHome(req, res) {
   homeController.getHomePage(req, res);
+}
+
+function handleAuth(req, res) {
+  authController.checkJWT(req, res);
 }
 
 // Handler for 404 Not Found
@@ -26,5 +30,6 @@ function handleNotFound(req, res) {
 
 module.exports = {
   handleHome,
+  handleAuth,
   handleNotFound
 };

@@ -1,6 +1,6 @@
 const http = require("http");
 const path = require("path");
-const { handleHome, handleNotFound } = require("./routes");
+const { handleHome, handleAuth, handleNotFound } = require("./routes");
 
 const PUBLIC_DIR = path.join(__dirname, "../public/");
 
@@ -19,15 +19,20 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { "Content-Type": contentType });
       return res.end(data);
     } catch (err) {
-      console.error(err);
-
-      res.writeHead(404);
-      return res.end("File not found");
+      handleNotFound(req, res);
     }
   }
 
   if (req.url === "/") {
-    authorization.checkJWT(req, res);
+    handleAuth(req, res);
+  }
+
+  if (req.url === "/login") {
+    const filePath = path.join(PUBLIC_DIR, "views/login.html");
+    const data = await fs.readFile(filePath);
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+    return res.end(data);
   }
 });
 
