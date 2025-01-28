@@ -5,19 +5,15 @@ function checkJWT(req, res) {
   const token = req.headers["Authorization"];
 
   if (!token) {
-    res.writeHead(301, { 'Location': '/login' });
-    res.end();
+    return 0;
   }
 
   jwt.verify(token, secret, (err, decoded) => {
     if (err) {
-      return res.writeHead(401).end("Invalid token");
+      return 0;
     }
 
-    // Do something with the decoded data
-    console.log(decoded);
-
-    res.writeHead(200).end("You are logged in");
+    return 1;
   });
 }
 
